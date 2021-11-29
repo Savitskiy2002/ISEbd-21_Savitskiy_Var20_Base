@@ -69,16 +69,6 @@ namespace WindowsFormsCatamarans
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            //g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
-            //for (int i = 0; i < _places.Length / 5; i++)
-            //{
-            //    for (int j = 0; j < 6; ++j)
-            //    {
-            //        g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
-            //        i * _placeSizeWidth + 110, j * _placeSizeHeight);
-            //    }
-            //    g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
-            //}
             for(int i = 0; i < pictureWidth / _placeSizeWidth; i++)
             {
                 for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
@@ -87,6 +77,15 @@ namespace WindowsFormsCatamarans
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
+        }
+
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
         }
     }
 }
