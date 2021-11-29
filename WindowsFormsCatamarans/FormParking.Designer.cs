@@ -40,6 +40,7 @@
             this.tBParkName = new System.Windows.Forms.TextBox();
             this.lBParking = new System.Windows.Forms.ListBox();
             this.lParking = new System.Windows.Forms.Label();
+            this.btnChoose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxParking.SuspendLayout();
             this.SuspendLayout();
@@ -55,22 +56,24 @@
             // 
             // buttonParkBoat
             // 
-            this.buttonParkBoat.Location = new System.Drawing.Point(763, 212);
+            this.buttonParkBoat.Location = new System.Drawing.Point(763, 372);
             this.buttonParkBoat.Name = "buttonParkBoat";
             this.buttonParkBoat.Size = new System.Drawing.Size(134, 39);
             this.buttonParkBoat.TabIndex = 1;
             this.buttonParkBoat.Text = "Припарковать лодку";
             this.buttonParkBoat.UseVisualStyleBackColor = true;
+            this.buttonParkBoat.Visible = false;
             this.buttonParkBoat.Click += new System.EventHandler(this.buttonParkBoat_Click);
             // 
             // buttonParkCatamaran
             // 
-            this.buttonParkCatamaran.Location = new System.Drawing.Point(763, 257);
+            this.buttonParkCatamaran.Location = new System.Drawing.Point(763, 417);
             this.buttonParkCatamaran.Name = "buttonParkCatamaran";
             this.buttonParkCatamaran.Size = new System.Drawing.Size(134, 39);
             this.buttonParkCatamaran.TabIndex = 2;
             this.buttonParkCatamaran.Text = "Припарковать катамаран";
             this.buttonParkCatamaran.UseVisualStyleBackColor = true;
+            this.buttonParkCatamaran.Visible = false;
             this.buttonParkCatamaran.Click += new System.EventHandler(this.buttonParkCatamaran_Click);
             // 
             // groupBoxParking
@@ -78,7 +81,7 @@
             this.groupBoxParking.Controls.Add(this.buttonTakeOff);
             this.groupBoxParking.Controls.Add(this.maskedTextBoxParking);
             this.groupBoxParking.Controls.Add(this.label1);
-            this.groupBoxParking.Location = new System.Drawing.Point(763, 302);
+            this.groupBoxParking.Location = new System.Drawing.Point(763, 257);
             this.groupBoxParking.Name = "groupBoxParking";
             this.groupBoxParking.Size = new System.Drawing.Size(134, 80);
             this.groupBoxParking.TabIndex = 3;
@@ -156,11 +159,22 @@
             this.lParking.TabIndex = 9;
             this.lParking.Text = "Парковки";
             // 
+            // btnChoose
+            // 
+            this.btnChoose.Location = new System.Drawing.Point(763, 212);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(134, 39);
+            this.btnChoose.TabIndex = 14;
+            this.btnChoose.Text = "Добавить";
+            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 461);
+            this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.btnRemovePark);
             this.Controls.Add(this.btnParkAdd);
             this.Controls.Add(this.tBParkName);
@@ -194,5 +208,6 @@
         private System.Windows.Forms.TextBox tBParkName;
         private System.Windows.Forms.ListBox lBParking;
         private System.Windows.Forms.Label lParking;
+        private System.Windows.Forms.Button btnChoose;
     }
 }
