@@ -26,6 +26,11 @@ namespace WindowsFormsCatamarans
             Motor = motor;
         }
 
+        public void setDopColor(Color dopColor)
+        {
+            DopColor = dopColor;
+        }
+
         public override void DrawCatamaran(Graphics g)
         {
             Pen pen = new Pen(Color.Black);

@@ -14,5 +14,7 @@ namespace WindowsFormsCatamarans
         void MoveBoat(Direction direction);
 
         void DrawCatamaran(Graphics g);
+
+        void setMainColor(Color mainColor);
     }
 }

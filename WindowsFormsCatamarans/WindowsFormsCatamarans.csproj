@@ -50,6 +50,12 @@
     <Compile Include="Catamaran.cs" />
     <Compile Include="CatamaranGrade.cs" />
     <Compile Include="Enum.cs" />
+    <Compile Include="FormCarConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCarConfig.designer.cs">
+      <DependentUpon>FormCarConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCatamarans.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vecatamaran.cs" />
+    <EmbeddedResource Include="FormCarConfig.resx">
+      <DependentUpon>FormCarConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCatamarans.resx">
       <DependentUpon>FormCatamarans.cs</DependentUpon>
     </EmbeddedResource>
