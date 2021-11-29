@@ -26,6 +26,20 @@ namespace WindowsFormsCatamarans
             Motor = motor;
         }
 
+        public CatamaranGrade(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Sail = Convert.ToBoolean(strs[4]);
+                Motor = Convert.ToBoolean(strs[5]);
+            }
+        }
+
         public void setDopColor(Color dopColor)
         {
             DopColor = dopColor;
@@ -62,6 +76,11 @@ namespace WindowsFormsCatamarans
             //g.FillRectangle(dopBrush, _startPosX, _startPosY, 90, 10);
             //g.FillRectangle(dopBrush, _startPosX, _startPosY + 35, 90, 10);
             //g.FillRectangle(dopBrush, _startPosX + 35, _startPosY, 10, 35);
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{Sail}{separator}{Motor}";
         }
     }
 }

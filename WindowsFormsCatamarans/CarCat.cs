@@ -11,12 +11,24 @@ namespace WindowsFormsCatamarans
     {
         protected const int catamaranWidth = 90;
         protected const int catamaranHeight = 50;
+        protected readonly char separator = ';';
 
         public CarCat(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+
+        public CarCat(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         public override void MoveBoat(Direction direction)
@@ -64,6 +76,11 @@ namespace WindowsFormsCatamarans
             g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brGray, _startPosX, _startPosY + 5, 90, 35);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 45);
+        }
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
         }
     }
 }
