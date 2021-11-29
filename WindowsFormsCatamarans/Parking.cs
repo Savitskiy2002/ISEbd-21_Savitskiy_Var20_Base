@@ -7,57 +7,23 @@ using System.Drawing;
 
 namespace WindowsFormsCatamarans
 {
-    class Parking<T> where T : class, ITransport
+    public class Parking<T> where T : class, ITransport
     {
-
-        private T[] _places;
-
-        private int PictureWidth { get; set; }
-
-        private int PictureHeight { get; set; }
-
-        private const int _placeSizeWidth = 210;
-
+        private readonly List<T> _places;
+        private readonly int pictureWidth;
+        private readonly int pictureHeight;
+        private readonly int _maxCount;
+        private const int _placeSizeWidth = 180;
         private const int _placeSizeHeight = 80;
 
-        public Parking(int sizes, int pictureWidth, int pictureHeight)
+        public Parking(int picWidth, int picHeight)
         {
-            _places = new T[sizes];
-            PictureWidth = pictureWidth;
-            PictureHeight = pictureHeight;
-            for (int i = 0; i < _places.Length; i++)
-            {
-                _places[i] = null;
-            }
-        }
-
-        public static int operator +(Parking<T> p, T car)
-        {
-            for (int i = 0; i < p._places.Length; i++)
-            {
-                if (p.CheckFreePlace(i))
-                {
-                    p._places[i] = car;
-                    p._places[i].SetPosition(5 + i % 4 * _placeSizeWidth + 5, i / 4 * _placeSizeHeight + 15, p.PictureWidth, p.PictureHeight);
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        public static T operator -(Parking<T> p, int index)
-        {
-            if (index < 0 || index > p._places.Length)
-            {
-                return null;
-            }
-            if (!p.CheckFreePlace(index))
-            {
-                T car = p._places[index];
-                p._places[index] = null;
-                return car;
-            }
-            return null;
+            int width = picWidth / _placeSizeWidth;
+            int height = picHeight / _placeSizeHeight;
+            _maxCount = width * height;
+            _places = new List<T>();
+            pictureWidth = picWidth;
+            pictureHeight = picHeight;
         }
 
         private bool CheckFreePlace(int index)
@@ -65,30 +31,61 @@ namespace WindowsFormsCatamarans
             return _places[index] == null;
         }
 
+        public static bool operator +(Parking<T> p, T car)
+        {
+            if (p._places.Count < p._maxCount)
+            {
+                p._places.Add(car);
+                return true;
+            }
+            return false;
+        }
+
+        public static T operator -(Parking<T> p, int index)
+        {
+            if (index < 0 || index > p._places.Count)
+            {
+                return null;
+            }
+            if (!p.CheckFreePlace(index))
+            {
+                T car = p._places[index];
+                p._places.RemoveAt(index);
+                return car;
+            }
+            return null;
+        }
+
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
-                if (!CheckFreePlace(i))
-                {
-                    _places[i].DrawCatamaran(g);
-                }
+                _places[i].SetPosition(20 + i % 4 * _placeSizeWidth, i / 4 * _placeSizeHeight + 15, pictureWidth, pictureHeight);
+                _places[i]?.DrawCatamaran(g);
             }
         }
 
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
-            for (int i = 0; i < _places.Length / 5; i++)
+            //g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
+            //for (int i = 0; i < _places.Length / 5; i++)
+            //{
+            //    for (int j = 0; j < 6; ++j)
+            //    {
+            //        g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
+            //        i * _placeSizeWidth + 110, j * _placeSizeHeight);
+            //    }
+            //    g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+            //}
+            for(int i = 0; i < pictureWidth / _placeSizeWidth; i++)
             {
-                for (int j = 0; j < 6; ++j)
-                {
-                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,
-                    i * _placeSizeWidth + 110, j * _placeSizeHeight);
+                for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
+                {//линия рамзетки места 
+                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + _placeSizeWidth / 2, j * _placeSizeHeight);
                 }
-                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+                g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
         }
     }

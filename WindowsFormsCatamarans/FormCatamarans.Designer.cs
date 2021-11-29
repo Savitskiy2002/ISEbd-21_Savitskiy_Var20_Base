@@ -43,7 +43,7 @@
             this.pictureBoxCatamarans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxCatamarans.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxCatamarans.Name = "pictureBoxCatamarans";
-            this.pictureBoxCatamarans.Size = new System.Drawing.Size(979, 522);
+            this.pictureBoxCatamarans.Size = new System.Drawing.Size(758, 500);
             this.pictureBoxCatamarans.TabIndex = 0;
             this.pictureBoxCatamarans.TabStop = false;
             // 
@@ -62,7 +62,7 @@
             this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonUp.BackgroundImage = global::WindowsFormsCatamarans.Properties.Resources.Зелёная_стрелка1;
             this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonUp.Location = new System.Drawing.Point(903, 436);
+            this.buttonUp.Location = new System.Drawing.Point(682, 414);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(30, 30);
             this.buttonUp.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDown.BackgroundImage = global::WindowsFormsCatamarans.Properties.Resources.Зелёная_стрелка2;
             this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDown.Location = new System.Drawing.Point(903, 472);
+            this.buttonDown.Location = new System.Drawing.Point(682, 450);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(30, 30);
             this.buttonDown.TabIndex = 3;
@@ -86,7 +86,7 @@
             this.buttonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLeft.BackgroundImage = global::WindowsFormsCatamarans.Properties.Resources.Зелёная_стрелка3;
             this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLeft.Location = new System.Drawing.Point(867, 472);
+            this.buttonLeft.Location = new System.Drawing.Point(646, 450);
             this.buttonLeft.Name = "buttonLeft";
             this.buttonLeft.Size = new System.Drawing.Size(30, 30);
             this.buttonLeft.TabIndex = 4;
@@ -98,7 +98,7 @@
             this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRight.BackgroundImage = global::WindowsFormsCatamarans.Properties.Resources.Зелёная_стрелка4;
             this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRight.Location = new System.Drawing.Point(939, 472);
+            this.buttonRight.Location = new System.Drawing.Point(718, 450);
             this.buttonRight.Name = "buttonRight";
             this.buttonRight.Size = new System.Drawing.Size(30, 30);
             this.buttonRight.TabIndex = 5;
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 522);
+            this.ClientSize = new System.Drawing.Size(758, 500);
             this.Controls.Add(this.buttonCreateBoat);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);

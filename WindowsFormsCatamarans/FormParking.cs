@@ -12,23 +12,64 @@ namespace WindowsFormsCatamarans
 {
     public partial class FormParking : Form
     {
-        Parking<ITransport> parking;
+        private ParkingCollection parkingColl;
 
         public FormParking()
 
         {
             InitializeComponent();
-            parking = new Parking<ITransport>(20, pictureBoxParking.Width, pictureBoxParking.Height);
-            Draw();
+            parkingColl = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+        }
+
+        private void ReloadLevels()
+        {
+            int index = lBParking.SelectedIndex;
+            lBParking.Items.Clear();
+            for (int i = 0; i < parkingColl.Keys.Count; i++)
+            {
+                lBParking.Items.Add(parkingColl.Keys[i]);
+            }
+            if (lBParking.Items.Count > 0 && (index == -1 || index >= lBParking.Items.Count))
+            {
+                lBParking.SelectedIndex = 0;
+            }
+            else if (lBParking.Items.Count > 0 && index > -1 && index < lBParking.Items.Count)
+            {
+                lBParking.SelectedIndex = index;
+            }
         }
 
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
+            parkingColl[lBParking.SelectedItem.ToString()].Draw(gr);
             pictureBoxParking.Image = bmp;
 
+        }
+
+        private void btnParkAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tBParkName.Text))
+            {
+                MessageBox.Show("Введите название парковки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            parkingColl.AddParking(tBParkName.Text);
+            ReloadLevels();
+        }
+
+        private void btnRemovePark_Click(object sender, EventArgs e)
+        {
+            if (lBParking.SelectedIndex > -1)
+            {
+                if (MessageBox.Show($"Удалить парковку { lBParking.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    parkingColl.DelParking(lBParking.SelectedItem.ToString());
+                    ReloadLevels();
+                }
+            }
         }
 
         private void buttonParkBoat_Click(object sender, EventArgs e)
@@ -37,7 +78,7 @@ namespace WindowsFormsCatamarans
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var cat = new CarCat(100, 1000, dialog.Color);
-                if (parking + cat> -1)
+                if (parkingColl[lBParking.SelectedItem.ToString()] + cat)
                 {
                     Draw();
                 }
@@ -57,7 +98,7 @@ namespace WindowsFormsCatamarans
                 if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var cat = new CatamaranGrade(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                    if (parking + cat > -1)
+                    if (parkingColl[lBParking.SelectedItem.ToString()] + cat)
                     {
                         Draw();
                     }
@@ -73,7 +114,7 @@ namespace WindowsFormsCatamarans
         {
             if (maskedTextBoxParking.Text != "")
             {
-                var cat = parking - Convert.ToInt32(maskedTextBoxParking.Text);
+                var cat = parkingColl[lBParking.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBoxParking.Text);
                 if (cat != null)
                 {
                     FormCatamarans form = new FormCatamarans();
@@ -83,6 +124,11 @@ namespace WindowsFormsCatamarans
                 maskedTextBoxParking.Text = "";
                 Draw();
             }
+        }
+
+        private void lBParking_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
         }
     }
 }
