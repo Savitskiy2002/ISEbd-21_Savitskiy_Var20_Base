@@ -16,7 +16,7 @@ namespace WindowsFormsCatamarans
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCatamarans());
+            Application.Run(new FormParking());
         }
     }
 }

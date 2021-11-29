@@ -18,6 +18,12 @@ namespace WindowsFormsCatamarans
             InitializeComponent();
         }
 
+        public void setCat(ITransport cat)
+        {
+            this.cat = cat;
+            Draw();
+        }
+
         private void Draw()
         {
             Bitmap bmp = new Bitmap(pictureBoxCatamarans.Width, pictureBoxCatamarans.Height);
@@ -57,7 +63,7 @@ namespace WindowsFormsCatamarans
         private void buttonCreateBoat_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            cat = new CatamaranGrade(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, false, false, false);
+            cat = new CatamaranGrade(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
             cat.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCatamarans.Width, pictureBoxCatamarans.Height);
             Draw();
         }
