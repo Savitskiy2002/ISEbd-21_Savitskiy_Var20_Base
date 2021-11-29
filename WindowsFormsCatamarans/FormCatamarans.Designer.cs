@@ -34,6 +34,7 @@
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateBoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCatamarans)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.buttonCreateCatamaran.Name = "buttonCreateCatamaran";
             this.buttonCreateCatamaran.Size = new System.Drawing.Size(122, 23);
             this.buttonCreateCatamaran.TabIndex = 1;
-            this.buttonCreateCatamaran.Text = "Создать";
+            this.buttonCreateCatamaran.Text = "Создать лодку";
             this.buttonCreateCatamaran.UseVisualStyleBackColor = true;
             this.buttonCreateCatamaran.Click += new System.EventHandler(this.buttonCreateCatamaran_Click);
             // 
@@ -104,11 +105,23 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.buttonMove_Click);
             // 
+            // buttonCreateBoat
+            // 
+            this.buttonCreateBoat.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonCreateBoat.Location = new System.Drawing.Point(150, 13);
+            this.buttonCreateBoat.Name = "buttonCreateBoat";
+            this.buttonCreateBoat.Size = new System.Drawing.Size(120, 23);
+            this.buttonCreateBoat.TabIndex = 6;
+            this.buttonCreateBoat.Text = "Создать катамаран";
+            this.buttonCreateBoat.UseVisualStyleBackColor = true;
+            this.buttonCreateBoat.Click += new System.EventHandler(this.buttonCreateBoat_Click);
+            // 
             // FormCatamarans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonCreateBoat);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonDown);
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonCreateBoat;
     }
 }
