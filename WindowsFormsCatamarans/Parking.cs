@@ -33,19 +33,19 @@ namespace WindowsFormsCatamarans
 
         public static bool operator +(Parking<T> p, T car)
         {
-            if (p._places.Count < p._maxCount)
+            if (p._places.Count >= p._maxCount)
             {
-                p._places.Add(car);
-                return true;
+                throw new ParkingOverflowException();
             }
-            return false;
+            p._places.Add(car);
+            return true;
         }
 
         public static T operator -(Parking<T> p, int index)
         {
             if (index < 0 || index > p._places.Count)
             {
-                return null;
+                throw new ParkingNotFoundException(index);
             }
             if (!p.CheckFreePlace(index))
             {
